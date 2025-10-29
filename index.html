@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>بوابة الإنضمام إلى قنوات محترف PS2</title>
+<link rel="icon" type="image/png" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -14,16 +15,21 @@ body{
   margin:0;min-height:100vh;display:flex;flex-direction:column;
   font-family:'Cairo',sans-serif;color:var(--txt);
   background:radial-gradient(circle at 80% -10%,#1f2b5a90,transparent 70%),radial-gradient(circle at -10% 110%,#136f5f88,transparent 60%),linear-gradient(135deg,var(--bg1),var(--bg2));
+  overflow-x:hidden;
 }
-.wrap{flex:1;display:flex;flex-direction:column;align-items:center;padding:24px 16px}
+.wrap{flex:1;display:flex;flex-direction:column;align-items:center;padding:24px 16px;animation:fadeIn 1.2s ease forwards;opacity:0}
+@keyframes fadeIn{to{opacity:1;}}
 header{text-align:center;margin-bottom:24px}
 header h1{
   font-weight:800;font-size:clamp(24px,6vw,38px);margin:0;color:var(--txt);
 }
 header h2{
-  font-weight:900;font-size:clamp(28px,7vw,44px);
-  background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;color:transparent;margin-top:4px;
+  font-weight:900;font-size:clamp(28px,7vw,44px);margin-top:4px;
+  background:linear-gradient(90deg,#5ad1ff,#7cffc7,#5ad1ff);
+  -webkit-background-clip:text;color:transparent;
+  background-size:300% 100%;animation:shine 5s linear infinite;
 }
+@keyframes shine{0%{background-position:0%}100%{background-position:100%}}
 .sub{font-weight:500;font-size:15px;opacity:.9;margin-top:8px}
 .grid{
   width:100%;max-width:1100px;
@@ -32,7 +38,18 @@ header h2{
 }
 .card{
   background:var(--card);border-radius:18px;padding:18px;text-align:center;
-  box-shadow:0 10px 25px #0008,inset 0 0 0 1px #ffffff18;backdrop-filter:blur(6px);
+  box-shadow:0 10px 25px #0008,inset 0 0 0 1px #ffffff18;
+  backdrop-filter:blur(6px);
+  transform:translateY(40px);opacity:0;
+  animation:slideUp .8s ease forwards;
+}
+.card:nth-child(1){animation-delay:.2s}
+.card:nth-child(2){animation-delay:.4s}
+.card:nth-child(3){animation-delay:.6s}
+.card:nth-child(4){animation-delay:.8s}
+.card:nth-child(5){animation-delay:1s}
+@keyframes slideUp{
+  to{opacity:1;transform:translateY(0);}
 }
 .card h3{margin:0 0 10px;font-weight:800;font-size:20px}
 .card img{
@@ -40,14 +57,22 @@ header h2{
   filter:drop-shadow(0 0 8px #0007);
 }
 .desc{opacity:.9;margin:0 0 14px;font-size:14px}
+.btns{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
 .btn{
-  display:inline-block;padding:10px 16px;border-radius:12px;
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 16px;border-radius:12px;
   background:linear-gradient(135deg,var(--acc),var(--acc2));
   color:#0c1327;font-weight:800;text-decoration:none;
   box-shadow:0 10px 18px #00e0ff33,inset 0 0 0 1px #ffffff80;
-  transition:transform .15s ease;
+  transition:transform .15s ease, box-shadow .15s ease;
 }
-.btn:hover{transform:translateY(-2px)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 22px #00e0ff55}
+.copy{
+  background:linear-gradient(135deg,#333,#555);
+  color:#fff;font-weight:600;
+  cursor:pointer;
+}
+.copy:hover{background:linear-gradient(135deg,#444,#666);}
 footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
 </style>
 </head>
@@ -56,7 +81,7 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
   <header>
     <h1>بوّابة الإنضمام إلى قنوات</h1>
     <h2>محترف PS2</h2>
-    <div class="sub">كل الروابط الرسمية في مكان واحد — انضم الآن عبر الزر أو QR</div>
+    <div class="sub">كل الروابط الرسمية في مكان واحد — انضم الآن أو انسخ الرابط المباشر</div>
   </header>
 
   <div class="grid">
@@ -66,7 +91,10 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
       <h3>قناة اليوتيوب الرسمية</h3>
       <img src="y.png" alt="YouTube">
       <p class="desc">شروحات + مشاريع ترجمة + نصائح محترف PS2.</p>
-      <a class="btn" href="https://youtube.com/@mohtaref_ps2?si=RBW_F6lvicAKbICM" target="_blank">اشترك الآن</a>
+      <div class="btns">
+        <a class="btn" href="https://youtube.com/@mohtaref_ps2?si=RBW_F6lvicAKbICM" target="_blank">اشترك الآن</a>
+        <div class="btn copy" data-url="https://youtube.com/@mohtaref_ps2?si=RBW_F6lvicAKbICM">📋 نسخ</div>
+      </div>
     </div>
 
     <!-- Telegram Channel -->
@@ -74,7 +102,10 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
       <h3>قناة تيليجرام (الألعاب)</h3>
       <img src="t1.png" alt="Telegram">
       <p class="desc">أحدث ألعاب PS2 + ملفات جاهزة + شروحات.</p>
-      <a class="btn" href="https://t.me/mohtaref_ps2_1" target="_blank">انضم الآن</a>
+      <div class="btns">
+        <a class="btn" href="https://t.me/mohtaref_ps2_1" target="_blank">انضم الآن</a>
+        <div class="btn copy" data-url="https://t.me/mohtaref_ps2_1">📋 نسخ</div>
+      </div>
     </div>
 
     <!-- Forum -->
@@ -82,7 +113,10 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
       <h3>منتدى المتابعين (حلول سريعة)</h3>
       <img src="t2.png" alt="Forum">
       <p class="desc">اسأل ونجاوب بأسرع وقت + تجارب ونقاشات.</p>
-      <a class="btn" href="https://t.me/mohtaref_ps2_3/788" target="_blank">ادخل للمنتدى</a>
+      <div class="btns">
+        <a class="btn" href="https://t.me/mohtaref_ps2_3/788" target="_blank">ادخل للمنتدى</a>
+        <div class="btn copy" data-url="https://t.me/mohtaref_ps2_3/788">📋 نسخ</div>
+      </div>
     </div>
 
     <!-- Topics -->
@@ -90,7 +124,10 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
       <h3>مجموعة الموضوعات</h3>
       <img src="t3.png" alt="Topics">
       <p class="desc">كل المواضيع مرتبة (فلاشات + OPL + ترجمة).</p>
-      <a class="btn" href="https://t.me/mohtaref_ps2_3" target="_blank">تصفح المواضيع</a>
+      <div class="btns">
+        <a class="btn" href="https://t.me/mohtaref_ps2_3" target="_blank">تصفح المواضيع</a>
+        <div class="btn copy" data-url="https://t.me/mohtaref_ps2_3">📋 نسخ</div>
+      </div>
     </div>
 
     <!-- TikTok -->
@@ -98,12 +135,28 @@ footer{opacity:.7;margin:18px 0 8px;font-size:13px;text-align:center}
       <h3>قناة تيك توك</h3>
       <img src="tik.png" alt="TikTok">
       <p class="desc">مقاطع سريعة + نصائح + لقطات ومحتوى متنوع.</p>
-      <a class="btn" href="https://www.tiktok.com/@mohtaref_ps2?a" target="_blank">تابعنا</a>
+      <div class="btns">
+        <a class="btn" href="https://www.tiktok.com/@mohtaref_ps2?a" target="_blank">تابعنا</a>
+        <div class="btn copy" data-url="https://www.tiktok.com/@mohtaref_ps2?a">📋 نسخ</div>
+      </div>
     </div>
 
   </div>
 
   <footer>© محترف PS2 — بوّابة الإنضمام</footer>
 </div>
+
+<script>
+// نسخ الروابط
+document.querySelectorAll('.copy').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const url = btn.getAttribute('data-url');
+    navigator.clipboard.writeText(url).then(()=>{
+      btn.textContent='✅ تم النسخ';
+      setTimeout(()=>btn.textContent='📋 نسخ',1500);
+    });
+  });
+});
+</script>
 </body>
 </html>
